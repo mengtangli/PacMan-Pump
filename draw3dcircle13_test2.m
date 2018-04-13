@@ -41,23 +41,9 @@ view(24,24);
 
 for i = 1:1:n
     wt = angle(i);
-    
-    % cosa = 3/4; sina = sqrt(7)/4;
-    Ainv = [ 3*cos(2*wt)/4,          3*sin(2*wt)/4,         7^(1/2)/4;
-        -sin(2*wt),                cos(2*wt),             0;
-        -7^(1/2)*cos(2*wt)/4,   -7^(1/2)*sin(2*wt)/4,       3/4;];
-    
-    Binv = [ cos(-1.5*wt)    sin(-1.5*wt)    0;
-        -sin(-1.5*wt)    cos(-1.5*wt)    0;
-        0           0        1;];
-    C = Binv*Ainv;
-    
-    rho1 = C'*[cos(0); sin(0); 0]*2*R;
-    R1 = [0; 0; 0];
-    r1 = R1+rho1;
-    x_record1(i) = r1(1);
-    y_record1(i) = r1(2);
-    z_record1(i) = r1(3);
+    x_record1(i) = 2*R*( cos(1.5*wt)*3/4*cos(2*wt)+sin(1.5*wt)*sin(2*wt) );
+    y_record1(i) = 2*R*( cos(1.5*wt)*3/4*sin(2*wt)-sin(1.5*wt)*cos(2*wt) );
+    z_record1(i) = 2*R*( cos(1.5*wt)*(7^0.5)/4 );
 end
 
 plot3(x_record1, y_record1, z_record1, 'r-.','linewidth',1);
