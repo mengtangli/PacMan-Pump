@@ -1,5 +1,6 @@
 % Plot moving 3D gear set with same size but lower part 
-% (show lower semi circle)
+% (show lower semi circle). The center of the smaller half piece
+% is fixed.
 % Mengtang Li
 % Apr 13
 clear; clf; close all;

@@ -1,5 +1,6 @@
 % Plot moving 3D gear set with same size but lower part 
-% (show lower semi circle)
+% (show lower semi circle). The center of the smaller half piece
+% is rotating.
 % Mengtang Li
 % Apr 13
 clear; clf; close all;
@@ -65,6 +66,8 @@ z_record6 = zeros(1,n);
 
 plot3(L/2*cos(angle), L/2*sin(angle), 0*angle, 'r', 'linewidth',2)
 plot3(R*cos(angle), R*sin(angle), 0*angle+R, 'r', 'linewidth',2)
+plot3(0.3*R*sin(pi/6)*cos(angle), 0.3*R*sin(pi/6)*sin(angle), -0.3*R*cos(pi/6)+0*angle, 'm-.','linewidth',1);
+
 pause(2);
 
 for i = 1:1:n
@@ -210,8 +213,8 @@ for i = 1:1:n
     plotline0 = plot3([R_x; r_xvt], [R_y; r_yvt], [R_z; r_zvt],'b','linewidth',2);
     plotline1 = plot3([r_x2; r_x4], [r_y2; r_y4], [r_z2; r_z4],'g','linewidth',2); %!!
     plotline2 = plot3([r_x2e; r_x4e], [r_y2e; r_y4e], [r_z2e; r_z4e],'r','linewidth',2);
-    plotline3 = plot3([r_x2e2; r_x4e2], [r_y2e2; r_y4e2], [r_z2e2; r_z4e2],'m','linewidth',2);
-    
+%     plotline3 = plot3([r_x2e2; r_x4e2], [r_y2e2; r_y4e2], [r_z2e2; r_z4e2],'m','linewidth',2);
+    plotline3 = plot3([r_x2e2; (r_x2e2+r_x4e2)/2], [r_y2e2; (r_y2e2+r_y4e2)/2], [r_z2e2; (r_z2e2+r_z4e2)/2],'m','linewidth',2);
     pause(0.02);
     if (i < n)
         delete(plotcircle1);
@@ -229,4 +232,4 @@ plot3(x_record1, y_record1, z_record1, 'b-.','linewidth',1);
 plot3(x_record3, y_record3, z_record3, 'g-.','linewidth',1);
 plot3(x_record4, y_record4, z_record4, 'r-.','linewidth',1);
 % plot3(x_record5, y_record5, z_record5, 'm-.','linewidth',1);
-plot3(x_record6, y_record6, z_record6, 'm-.','linewidth',1);
+% plot3(x_record6, y_record6, z_record6, 'm-.','linewidth',1);
