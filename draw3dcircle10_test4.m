@@ -5,9 +5,9 @@
 % Apr 13
 clear; clf; close all;
 
-load('C:\Users\lim14\Documents\MATLAB\Project_504\TAH\draw3dcircle\10\x_re1.mat')
-load('C:\Users\lim14\Documents\MATLAB\Project_504\TAH\draw3dcircle\10\y_re1.mat')
-load('C:\Users\lim14\Documents\MATLAB\Project_504\TAH\draw3dcircle\10\z_re1.mat')
+load('C:\Users\mengtangli\Documents\MATLAB\Project_504\draw3dcircle\10\x_re1.mat');
+load('C:\Users\mengtangli\Documents\MATLAB\Project_504\draw3dcircle\10\y_re1.mat');
+load('C:\Users\mengtangli\Documents\MATLAB\Project_504\draw3dcircle\10\z_re1.mat');
 
 figure('OuterPosition', [50 50 1000 1000]);
 grid minor; grid on; hold on;
@@ -60,9 +60,9 @@ z_record4 = zeros(1,n);
 x_record5 = zeros(1,n);
 y_record5 = zeros(1,n);
 z_record5 = zeros(1,n);
-x_record6 = zeros(1,n);
-y_record6 = zeros(1,n);
-z_record6 = zeros(1,n);
+x_re1 = zeros(1,n);
+y_re1 = zeros(1,n);
+z_re1 = zeros(1,n);
 
 plot3(L/2*cos(angle), L/2*sin(angle), 0*angle, 'r', 'linewidth',2)
 plot3(R*cos(angle), R*sin(angle), 0*angle+R, 'r', 'linewidth',2)
@@ -190,21 +190,21 @@ for i = 1:1:n
     r_y2e = R_y + rho_y2e;  y_record4(i) = r_y2e;
     r_z2e = R_z + rho_z2e + (3^0.5)/2*h;  z_record4(i) = r_z2e;
     % lowered extended 2nd point (90 deg) in moving frame
-    r_x2e2 = R_x + rho_x2e2;  x_record5(i) = r_x2e2;
-    r_y2e2 = R_y + rho_y2e2;  y_record5(i) = r_y2e2;
-    r_z2e2 = R_z + rho_z2e2 + (3^0.5)/2*h;  z_record5(i) = r_z2e2;    
+    r_x2e2 = R_x + rho_x2e2;  x_re1(i) = r_x2e2;
+    r_y2e2 = R_y + rho_y2e2;  y_re1(i) = r_y2e2;
+    r_z2e2 = R_z + rho_z2e2 + (3^0.5)/2*h;  z_re1(i) = r_z2e2;    
     % extended 4th point (270 deg) in moving frame
-    r_x4e = R_x + rho_x4e;  %x_record5(i) = r_x4e;
-    r_y4e = R_y + rho_y4e;  %y_record5(i) = r_y4e;
-    r_z4e = R_z + rho_z4e + (3^0.5)/2*h;  %z_record5(i) = r_z4e;
+    r_x4e = R_x + rho_x4e;  
+    r_y4e = R_y + rho_y4e;  
+    r_z4e = R_z + rho_z4e + (3^0.5)/2*h;  
     % lowered extended 4th point (270 deg) in moving frame
-    r_x4e2 = R_x + rho_x4e2;  %x_record5(i) = r_x4e;
-    r_y4e2 = R_y + rho_y4e2;  %y_record5(i) = r_y4e;
-    r_z4e2 = R_z + rho_z4e2 + (3^0.5)/2*h;  %z_record5(i) = r_z4e;
+    r_x4e2 = R_x + rho_x4e2;  
+    r_y4e2 = R_y + rho_y4e2;  
+    r_z4e2 = R_z + rho_z4e2 + (3^0.5)/2*h;  
     
-    x_record6(i) = (r_x2e2+r_x4e2)/2;
-    y_record6(i) = (r_y2e2+r_y4e2)/2;
-    z_record6(i) = (r_z2e2+r_z4e2)/2;
+    x_record5(i) = (r_x2e2+r_x4e2)/2;
+    y_record5(i) = (r_y2e2+r_y4e2)/2;
+    z_record5(i) = (r_z2e2+r_z4e2)/2;
     
     plotcircle1 = plot3(r_x,r_y,r_z,'b','linewidth',2);
     plotcircle2 = plot3(r2_x,r2_y,r2_z,'g','linewidth',2);
@@ -213,8 +213,8 @@ for i = 1:1:n
     plotline0 = plot3([R_x; r_xvt], [R_y; r_yvt], [R_z; r_zvt],'b','linewidth',2);
     plotline1 = plot3([r_x2; r_x4], [r_y2; r_y4], [r_z2; r_z4],'g','linewidth',2); %!!
     plotline2 = plot3([r_x2e; r_x4e], [r_y2e; r_y4e], [r_z2e; r_z4e],'r','linewidth',2);
-%     plotline3 = plot3([r_x2e2; r_x4e2], [r_y2e2; r_y4e2], [r_z2e2; r_z4e2],'m','linewidth',2);
-    plotline3 = plot3([r_x2e2; (r_x2e2+r_x4e2)/2], [r_y2e2; (r_y2e2+r_y4e2)/2], [r_z2e2; (r_z2e2+r_z4e2)/2],'m','linewidth',2);
+    plotline3 = plot3([r_x2e2; r_x4e2], [r_y2e2; r_y4e2], [r_z2e2; r_z4e2],'m','linewidth',2);
+%     plotline3 = plot3([r_x2e2; (r_x2e2+r_x4e2)/2], [r_y2e2; (r_y2e2+r_y4e2)/2], [r_z2e2; (r_z2e2+r_z4e2)/2],'m','linewidth',2);
     pause(0.02);
     if (i < n)
         delete(plotcircle1);
@@ -231,5 +231,5 @@ end
 plot3(x_record1, y_record1, z_record1, 'b-.','linewidth',1);
 plot3(x_record3, y_record3, z_record3, 'g-.','linewidth',1);
 plot3(x_record4, y_record4, z_record4, 'r-.','linewidth',1);
-% plot3(x_record5, y_record5, z_record5, 'm-.','linewidth',1);
-% plot3(x_record6, y_record6, z_record6, 'm-.','linewidth',1);
+plot3(x_re1, y_re1, z_re1, 'm-.','linewidth',1);
+plot3(x_record5, y_record5, z_record5, 'm-.','linewidth',1);
