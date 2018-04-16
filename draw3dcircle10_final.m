@@ -205,16 +205,16 @@ for i = 1:1:n
     r_x4e2 = R_x + rho_x4e2;  
     r_y4e2 = R_y + rho_y4e2;  
     r_z4e2 = R_z + rho_z4e2 + (3^0.5)/2*h;  
-    % lower shifted extended 2nd point (pi+asin(0.1) rad) in moving frame [the CAYON line]
+    % upper shifted extended 2nd point (pi+asin(0.1) rad) in moving frame [the CAYON line]
     r_x1e2 = R_x + rho_x1e2;                x_record6(i) = r_x1e2;
     r_y1e2 = R_y + rho_y1e2;                y_record6(i) = r_y1e2;
     r_z1e2 = R_z + rho_z1e2 + (3^0.5)/2*h;  z_record6(i) = r_z1e2;        
-    % lower shifted extended 4th point (2*pi-asin(0.1) rad) in moving frame [the CAYON line]
+    % upper shifted extended 4th point (2*pi-asin(0.1) rad) in moving frame [the CAYON line]
     r_x3e2 = R_x + rho_x3e2;  
     r_y3e2 = R_y + rho_y3e2;  
     r_z3e2 = R_z + rho_z3e2 + (3^0.5)/2*h;      
    
-    
+    % plot each frame
     plotcircle1 = plot3(r_x,r_y,r_z,'b','linewidth',2);
     plotcircle2 = plot3(r2_x,r2_y,r2_z,'g','linewidth',2);
     plotcircle3 = plot3(r2_xe,r2_ye,r2_ze,'r','linewidth',2);
@@ -226,6 +226,7 @@ for i = 1:1:n
     plotline3 = plot3([r_x2e2; r_x4e2], [r_y2e2; r_y4e2], [r_z2e2; r_z4e2],'m','linewidth',2);
     plotline4 = plot3([r_x1e2; r_x3e2], [r_y1e2; r_y3e2], [r_z1e2; r_z3e2],'m','linewidth',2);
     pause(0.02);
+    % and delete them after some pause
     if (i < n)
         delete(plotcircle1);
         delete(plotcircle2);
